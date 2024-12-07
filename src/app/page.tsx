@@ -2,18 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import styles from '@/styles/Home.module.css';
-
-interface Brewery {
-  id: string;
-  name: string;
-  brewery_type: string;
-  city: string;
-  state: string;
-  country: string;
-  website_url: string | null;
-  address_1: string;
-  phone: string;
-}
+import BreweryCard from './components/BreweryCard';
+import { Brewery } from '@/types/brewery';
 
 export default function Home() {
   const [breweries, setBreweries] = useState<Brewery[]>([]);
@@ -101,46 +91,11 @@ export default function Home() {
         ) : (
           <div className={styles.breweriesGrid}>
             {filteredBreweries.map((brewery) => (
-              <div key={brewery.id} className={styles.breweryCard}>
-              <div className={styles.cardContent}>
-                <div className={styles.cardHeader}>
-                  <h2 className={styles.breweryName}>
-                    {brewery.name}
-                  </h2>
-                  <span className={styles.breweryType}>
-                    {brewery.brewery_type}
-                  </span>
-                </div>
-                  
-                  <div className={styles.infoContainer}>
-                    <p className={styles.infoText}>
-                      <span className={styles.infoLabel}>Location:</span><br/>
-                      {brewery.address_1}<br/>
-                      {brewery.city}, {brewery.state}<br/>
-                      {brewery.country}
-                    </p>
-                    
-                    <p className={styles.infoText}>
-                      <span className={styles.infoLabel}>Phone:</span><br/>
-                      {formatPhoneNumber(brewery.phone)}
-                    </p>
-
-                    {brewery.website_url && (
-                      <a
-                        href={brewery.website_url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={styles.websiteButton}
-                      >
-                        Visit Website
-                        <svg className={styles.websiteIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                        </svg>
-                      </a>
-                    )}
-                  </div>
-                </div>
-              </div>
+              <BreweryCard
+                key={brewery.id}
+                brewery={brewery}
+                formatPhoneNumber={formatPhoneNumber}
+              />
             ))}
           </div>
         )}

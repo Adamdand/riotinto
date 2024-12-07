@@ -1,5 +1,4 @@
-# .github/workflows/deploy.yml
-name: Deploy to AWS Amplify
+name: Deploy to AWS
 
 on:
   push:
@@ -9,8 +8,14 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
@@ -19,7 +24,15 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build
+
       - name: Deploy to AWS Amplify
+        env:
+          AMPLIFY_APP_ID: ${{ secrets.AMPLIFY_APP_ID }}
         uses: aws-actions/aws-amplify-deploy@v1
         with:
           app-id: ${{ secrets.AMPLIFY_APP_ID }}

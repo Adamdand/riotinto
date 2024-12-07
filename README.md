@@ -8,6 +8,12 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 ### Frontend Interface
 ![Frontend Working](./frontend_working.JPG)
 
+### AWS CICD Archicecture
+![AWS CICD Arch](./aws-cidc-architecture.JPG)
+
+### CICD Flow
+![CICD Flow](./cicd-flow.JPG)
+
 ## Getting Started
 
 First, run the development server:
@@ -43,3 +49,30 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
+
+## TODO: 
+# within github:
+Go to your GitHub repo → Settings → Secrets and variables → Actions
+Add these secrets:
+
+AWS_ACCESS_KEY_ID: Your AWS access key
+AWS_SECRET_ACCESS_KEY: Your AWS secret key
+AMPLIFY_APP_ID: Your Amplify app ID (found in the Amplify Console URL)
+
+# within AWS Console:
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - npm ci
+    build:
+      commands:
+        - npm run build
+  artifacts:
+    baseDirectory: .next
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - node_modules/**/*
