@@ -12,6 +12,11 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 ![cdk output](./cdk-deploy.JPG)
 ![cdk output2](./cdk-deploy2.JPG)
 
+## Amplify Deploy
+![Amplify Deploy](./amplify-deploy1.JPG)
+# adam is poor :'<
+![Amplify Deploy2](./amplify-deploy2.JPG)
+
 ### AWS CICD Archicecture
 ![AWS CICD Arch](./aws-cidc-architecture.JPG)
 
