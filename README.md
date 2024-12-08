@@ -8,6 +8,10 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 ### Frontend Interface
 ![Frontend Working](./frontend_working.JPG)
 
+### cdk deploy
+![cdk output](./cdk-deploy.JPG)
+![cdk output2](./cdk-deploy2.JPG)
+
 ### AWS CICD Archicecture
 ![AWS CICD Arch](./aws-cidc-architecture.JPG)
 
