@@ -14,7 +14,7 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Amplify Deploy
 ![Amplify Deploy](./amplify-deploy1.JPG)
-# adam is poor :'<
+#### adam is poor :'<
 ![Amplify Deploy2](./amplify-deploy2.JPG)
 
 ### AWS CICD Archicecture
