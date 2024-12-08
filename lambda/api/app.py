@@ -1,4 +1,3 @@
-
 from flask import Flask, jsonify # type: ignore
 from flask_cors import CORS # type: ignore
 import awsgi # type: ignore
